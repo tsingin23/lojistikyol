@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using backend.Data;
@@ -12,92 +11,86 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260710142453_UpdateUserSeedBalancesLower")]
-    partial class UpdateUserSeedBalancesLower
+    [Migration("20260710152810_InitialCreateSqlite")]
+    partial class InitialCreateSqlite
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.17")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.17");
 
             modelBuilder.Entity("backend.Models.Ad", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("AssignedDriverId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("AuctionEndsAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CargoImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("CargoValue")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<double>("DistanceKm")
-                        .HasColumnType("float");
+                        .HasColumnType("REAL");
 
                     b.Property<string>("EndLocation")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("FloorPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("TEXT");
 
                     b.Property<double>("FuelConsumptionRate")
-                        .HasColumnType("float");
+                        .HasColumnType("REAL");
 
                     b.Property<decimal?>("InstantBookPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsInstantBook")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("RequiredLevel")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("SenderId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("StartLocation")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("VerificationCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("WaybillOcrText")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("WaybillUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<double>("WeatherDemandMultiplier")
-                        .HasColumnType("float");
+                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 
@@ -109,7 +102,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(1040),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(2600),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 80000m,
                             Description = "2+1 ev eşyası taşınacaktır. Dikkatli ve özenli taşıma gereklidir.",
@@ -129,7 +122,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 2,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(2431),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(3893),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 200000m,
                             Description = "15 ton paletli demir boru sevkiyatı. Dorseli tır gereklidir.",
@@ -149,7 +142,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 3,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(2438),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(3899),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 500000m,
                             Description = "Yüksek riskli kimyasal madde taşıması. ADR belgeli araç ve özel sigorta zorunludur.",
@@ -169,7 +162,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 101,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(2441),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(3902),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 60000m,
                             Description = "İzmir'e geri dönecek araçlar için mobilya yükü.",
@@ -189,7 +182,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 102,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(2444),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(3904),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 120000m,
                             Description = "Kocaeli yönüne dönecek tırlar için paletli rulo sac.",
@@ -209,7 +202,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 103,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(2458),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(3912),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 400000m,
                             Description = "Liman yönüne dönecek tanker veya dorseler için ham petrol türevi.",
@@ -229,7 +222,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 104,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(2460),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(3914),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 150000m,
                             Description = "Soğutmalı kasa (frigo) van veya kamyon için gıda paletleri.",
@@ -249,7 +242,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 105,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(2462),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(3930),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 170000m,
                             Description = "İstanbul'a dönecek araçlar için hafif ama hacimli ambalaj kutuları.",
@@ -269,7 +262,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 106,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(2464),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(3932),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 50000m,
                             Description = "İzmir yönüne boş dönecek van veya kamyonet için paletsiz koliler.",
@@ -289,7 +282,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 107,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(2484),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(3935),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 90000m,
                             Description = "Bursa tekstil bölgesine gidecek iplik çuvalları.",
@@ -309,7 +302,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 108,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(2486),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(3938),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 130000m,
                             Description = "Bursa fabrikasına acil yedek parça teslimatı.",
@@ -329,7 +322,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1000,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(3968),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(5592),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 271000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -350,7 +343,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1001,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4632),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6390),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 174000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -370,7 +363,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1002,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4642),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6401),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 359000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -390,7 +383,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1003,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4648),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6407),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 39000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -411,7 +404,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1004,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4669),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6414),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 32000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -431,7 +424,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1005,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4676),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6420),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 41000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -452,7 +445,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1006,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4683),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6429),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 148000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -472,7 +465,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1007,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4688),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6434),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 24000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -492,7 +485,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1008,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4691),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6451),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 200000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -513,7 +506,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1009,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4696),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6456),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 456000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -533,7 +526,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1010,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4700),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6461),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 237000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -554,7 +547,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1011,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4704),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6466),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 343000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -574,7 +567,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1012,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4709),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6470),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 125000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -594,7 +587,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1013,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4713),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6474),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 174000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -615,7 +608,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1014,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4717),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6478),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 426000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -635,7 +628,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1015,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4722),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6483),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 468000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -656,7 +649,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1016,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4727),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6487),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 78000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -676,7 +669,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1017,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4731),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6492),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 409000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -696,7 +689,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1018,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4735),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6496),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 80000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -717,7 +710,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1019,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4740),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6501),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 379000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -737,7 +730,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1020,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4744),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6505),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 129000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -758,7 +751,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1021,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4748),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6509),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 244000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -778,7 +771,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1022,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4753),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6515),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 407000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -798,7 +791,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1023,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4764),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6520),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 45000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -819,7 +812,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1024,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4772),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6530),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 238000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -839,7 +832,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1025,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4781),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6535),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 314000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -860,7 +853,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1026,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4786),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6539),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 27000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -880,7 +873,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1027,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4789),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6549),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 472000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -900,7 +893,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1028,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4793),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6553),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 125000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -921,7 +914,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1029,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4797),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6558),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 490000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -941,7 +934,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1030,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4801),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6562),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 106000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -962,7 +955,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1031,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4805),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6567),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 113000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -982,7 +975,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1032,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4809),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6571),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 169000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -1002,7 +995,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1033,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4813),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6575),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 433000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -1023,7 +1016,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1034,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4818),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6579),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 168000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -1043,7 +1036,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1035,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4822),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6584),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 260000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -1064,7 +1057,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1036,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4826),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6588),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 72000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -1084,7 +1077,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1037,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4830),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6591),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 22000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -1104,7 +1097,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1038,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4834),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6595),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 401000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -1125,7 +1118,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1039,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4838),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6599),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 366000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -1145,7 +1138,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1040,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4841),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6603),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 410000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -1166,7 +1159,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1041,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4846),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6608),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 411000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -1186,7 +1179,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1042,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4850),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6612),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 48000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -1206,7 +1199,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1043,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4854),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6615),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 485000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -1227,7 +1220,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1044,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4865),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6620),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 243000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -1247,7 +1240,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1045,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4869),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6624),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 41000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -1268,7 +1261,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1046,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4874),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6628),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 439000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -1288,7 +1281,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1047,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4878),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6632),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 318000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -1308,7 +1301,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1048,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4882),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6646),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 72000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -1329,7 +1322,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1049,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4886),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6650),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 411000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -1349,7 +1342,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1050,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4890),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6654),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 205000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -1370,7 +1363,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1051,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4894),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6659),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 347000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -1390,7 +1383,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1052,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4898),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6662),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 322000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -1410,7 +1403,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1053,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4902),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6666),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 79000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -1431,7 +1424,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1054,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4908),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6672),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 434000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -1451,7 +1444,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1055,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4912),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6676),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 437000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -1472,7 +1465,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1056,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4916),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6680),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 94000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -1492,7 +1485,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1057,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4921),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6685),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 254000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -1512,7 +1505,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1058,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4924),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6689),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 404000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -1533,7 +1526,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1059,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4929),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6693),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 66000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -1553,7 +1546,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1060,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4933),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6697),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 88000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -1574,7 +1567,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1061,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4937),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6701),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 27000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -1594,7 +1587,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1062,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4949),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6705),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 241000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -1614,7 +1607,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1063,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4953),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6709),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 102000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -1635,7 +1628,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1064,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4957),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6713),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 23000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -1655,7 +1648,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1065,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4960),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6717),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 104000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -1676,7 +1669,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1066,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4964),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6726),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 375000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -1696,7 +1689,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1067,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4969),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6732),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 100000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -1716,7 +1709,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1068,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4972),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6736),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 62000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -1737,7 +1730,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1069,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4976),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6740),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 412000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -1757,7 +1750,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1070,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4980),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6744),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 394000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -1778,7 +1771,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1071,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4985),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6748),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 358000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -1798,7 +1791,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1072,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4989),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6753),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 367000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -1818,7 +1811,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1073,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4992),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6756),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 421000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -1839,7 +1832,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1074,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(4996),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6760),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 170000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -1859,7 +1852,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1075,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5000),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6764),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 361000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -1880,7 +1873,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1076,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5005),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6769),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 195000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -1900,7 +1893,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1077,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5009),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6773),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 357000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -1920,7 +1913,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1078,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5013),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6776),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 415000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -1941,7 +1934,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1079,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5017),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6781),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 273000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -1961,7 +1954,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1080,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5021),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6785),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 218000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -1982,7 +1975,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1081,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5025),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6789),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 169000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -2002,7 +1995,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1082,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5035),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6793),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 424000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -2022,7 +2015,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1083,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5039),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6796),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 334000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -2043,7 +2036,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1084,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5043),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6801),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 40000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -2063,7 +2056,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1085,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5047),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6805),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 464000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -2084,7 +2077,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1086,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5051),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6809),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 90000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -2104,7 +2097,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1087,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5055),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6826),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 247000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -2124,7 +2117,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1088,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5059),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6830),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 53000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -2145,7 +2138,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1089,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5063),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6835),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 300000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -2165,7 +2158,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1090,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5067),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6838),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 454000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -2186,7 +2179,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1091,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5071),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6843),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 54000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -2206,7 +2199,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1092,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5075),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6847),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 303000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -2226,7 +2219,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1093,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5079),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6851),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 204000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -2247,7 +2240,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1094,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5083),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6855),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 494000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -2267,7 +2260,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1095,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5087),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6859),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 169000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -2288,7 +2281,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1096,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5092),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6863),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 374000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -2308,7 +2301,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1097,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5096),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6867),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 411000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -2328,7 +2321,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1098,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5100),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6871),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 484000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -2349,7 +2342,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1099,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5104),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6875),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 256000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -2369,7 +2362,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1100,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5108),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6879),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 25000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -2390,7 +2383,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1101,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5113),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6883),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 20000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -2410,7 +2403,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1102,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5116),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6887),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 77000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -2430,7 +2423,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1103,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5124),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6890),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 440000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -2451,7 +2444,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1104,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5128),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6895),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 438000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -2471,7 +2464,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1105,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5133),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6899),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 330000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -2492,7 +2485,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1106,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5137),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6903),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 425000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -2512,7 +2505,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1107,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5141),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6913),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 153000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -2532,7 +2525,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1108,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5144),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6922),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 466000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -2553,7 +2546,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1109,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5148),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6926),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 434000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -2573,7 +2566,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1110,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5151),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6930),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 498000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -2594,7 +2587,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1111,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5156),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6935),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 386000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -2614,7 +2607,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1112,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5160),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6939),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 326000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -2634,7 +2627,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1113,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5164),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6942),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 80000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -2655,7 +2648,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1114,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5168),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6947),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 355000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -2675,7 +2668,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1115,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5172),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6951),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 111000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -2696,7 +2689,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1116,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5177),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6955),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 49000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -2716,7 +2709,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1117,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5181),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6959),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 141000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -2736,7 +2729,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1118,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5185),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6963),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 256000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -2757,7 +2750,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1119,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5198),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6968),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 346000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -2777,7 +2770,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1120,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5202),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6972),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 465000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -2798,7 +2791,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1121,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5207),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6976),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 347000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -2818,7 +2811,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1122,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5211),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6980),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 487000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -2838,7 +2831,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1123,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5214),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6992),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 384000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -2859,7 +2852,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1124,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5218),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(6996),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 239000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -2879,7 +2872,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1125,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5222),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7000),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 122000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -2900,7 +2893,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1126,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5226),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7004),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 131000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -2920,7 +2913,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1127,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5230),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7008),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 141000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -2940,7 +2933,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1128,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5234),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7012),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 498000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -2961,7 +2954,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1129,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5238),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7016),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 80000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -2981,7 +2974,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1130,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5242),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7020),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 63000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -3002,7 +2995,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1131,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5246),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7024),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 55000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -3022,7 +3015,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1132,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5250),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7029),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 96000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -3042,7 +3035,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1133,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5254),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7033),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 438000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -3063,7 +3056,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1134,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5259),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7038),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 475000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -3083,7 +3076,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1135,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5262),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7042),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 189000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -3104,7 +3097,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1136,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5267),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7046),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 27000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3124,7 +3117,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1137,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5271),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7050),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 138000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -3144,7 +3137,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1138,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5275),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7054),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 397000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -3165,7 +3158,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1139,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5290),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7058),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 233000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -3185,7 +3178,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1140,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5297),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7062),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 316000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -3206,7 +3199,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1141,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5301),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7067),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 65000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -3226,7 +3219,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1142,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5305),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7070),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 175000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3246,7 +3239,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1143,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5309),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7078),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 366000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -3267,7 +3260,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1144,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5313),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7085),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 318000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3287,7 +3280,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1145,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5317),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7089),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 122000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3308,7 +3301,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1146,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5322),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7094),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 220000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -3328,7 +3321,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1147,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5325),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7097),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 487000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -3348,7 +3341,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1148,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5329),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7101),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 431000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3369,7 +3362,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1149,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5333),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7105),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 350000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -3389,7 +3382,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1150,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5337),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7109),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 50000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -3410,7 +3403,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1151,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5342),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7114),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 223000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -3430,7 +3423,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1152,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5346),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7118),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 464000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3450,7 +3443,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1153,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5350),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7122),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 429000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3471,7 +3464,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1154,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5354),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7126),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 226000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -3491,7 +3484,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1155,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5358),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7129),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 227000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3512,7 +3505,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1156,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5362),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7133),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 367000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3532,7 +3525,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1157,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5366),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7138),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 121000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3552,7 +3545,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1158,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5370),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7142),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 23000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -3573,7 +3566,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1159,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5374),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7147),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 238000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -3593,7 +3586,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1160,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5390),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7151),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 400000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -3614,7 +3607,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1161,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5394),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7155),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 397000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -3634,7 +3627,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1162,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5398),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7159),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 49000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -3654,7 +3647,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1163,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5401),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7163),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 275000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3675,7 +3668,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1164,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5405),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7176),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 255000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3695,7 +3688,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1165,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5409),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7181),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 57000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -3716,7 +3709,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1166,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5414),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7185),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 405000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -3736,7 +3729,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1167,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5418),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7190),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 494000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -3756,7 +3749,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1168,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5421),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7193),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 429000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -3777,7 +3770,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1169,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5425),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7197),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 77000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -3797,7 +3790,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1170,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5430),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7201),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 155000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -3818,7 +3811,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1171,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5434),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7206),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 318000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3838,7 +3831,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1172,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5437),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7210),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 127000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3858,7 +3851,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1173,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5441),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7214),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 256000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -3879,7 +3872,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1174,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5445),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7218),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 348000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -3899,7 +3892,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1175,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5448),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7222),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 24000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3920,7 +3913,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1176,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5453),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7227),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 210000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -3940,7 +3933,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1177,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5457),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7231),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 320000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -3960,7 +3953,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1178,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5461),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7234),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 487000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -3981,7 +3974,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1179,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5466),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7240),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 149000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -4001,7 +3994,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1180,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5470),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7243),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 156000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -4022,7 +4015,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1181,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5479),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7247),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 257000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -4042,7 +4035,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1182,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5483),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7251),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 191000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -4062,7 +4055,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1183,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5487),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7255),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 180000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -4083,7 +4076,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1184,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5490),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7259),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 68000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -4103,7 +4096,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1185,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5495),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7275),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 325000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -4124,7 +4117,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1186,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5499),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7279),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 241000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -4144,7 +4137,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1187,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5503),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7283),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 251000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -4164,7 +4157,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1188,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5507),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7287),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 275000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -4185,7 +4178,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1189,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5511),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7291),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 487000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -4205,7 +4198,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1190,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5515),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7295),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 432000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -4226,7 +4219,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1191,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5520),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7300),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 40000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -4246,7 +4239,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1192,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5524),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7304),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 362000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -4266,7 +4259,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1193,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5528),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7308),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 440000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -4287,7 +4280,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1194,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5532),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7312),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 58000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -4307,7 +4300,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1195,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5536),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7316),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 168000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -4328,7 +4321,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1196,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5540),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7321),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 389000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -4348,7 +4341,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1197,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5545),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7325),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 110000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -4368,7 +4361,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1198,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5549),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7328),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 231000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -4389,7 +4382,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1199,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5553),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7333),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 47000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -4409,7 +4402,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1200,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5557),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7337),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 416000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -4430,7 +4423,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1201,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5565),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7341),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 74000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -4450,7 +4443,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1202,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5570),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7345),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 104000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -4470,7 +4463,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1203,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5575),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7350),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 185000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -4491,7 +4484,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1204,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5579),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7354),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 289000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -4511,7 +4504,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1205,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5583),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7358),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 398000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -4532,7 +4525,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1206,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5587),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7372),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 385000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -4552,7 +4545,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1207,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5590),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7376),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 188000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -4572,7 +4565,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1208,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5594),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7380),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 301000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -4593,7 +4586,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1209,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5598),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7384),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 181000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -4613,7 +4606,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1210,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5602),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7388),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 328000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -4634,7 +4627,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1211,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5606),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7392),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 72000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -4654,7 +4647,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1212,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5610),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7396),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 439000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -4674,7 +4667,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1213,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5614),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7400),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 165000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -4695,7 +4688,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1214,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5618),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7404),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 406000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -4715,7 +4708,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1215,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5622),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7408),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 327000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -4736,7 +4729,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1216,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5626),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7412),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 462000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -4756,7 +4749,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1217,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5629),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7416),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 40000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -4776,7 +4769,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1218,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5633),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7420),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 428000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -4797,7 +4790,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1219,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5637),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7424),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 98000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -4817,7 +4810,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1220,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5640),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7427),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 132000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -4838,7 +4831,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1221,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5645),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7431),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 472000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -4858,7 +4851,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1222,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5653),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7435),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 182000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -4878,7 +4871,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1223,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5661),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7439),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 150000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -4899,7 +4892,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1224,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5665),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7443),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 187000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -4919,7 +4912,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1225,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5669),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7447),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 309000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -4940,7 +4933,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1226,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5673),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7455),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 205000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -4960,7 +4953,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1227,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5677),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7460),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 288000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -4980,7 +4973,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1228,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5681),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7464),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 128000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -5001,7 +4994,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1229,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5685),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7468),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 435000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -5021,7 +5014,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1230,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5689),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7472),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 495000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -5042,7 +5035,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1231,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5693),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7476),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 117000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -5062,7 +5055,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1232,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5697),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7480),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 493000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -5082,7 +5075,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1233,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5700),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7483),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 363000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -5103,7 +5096,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1234,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5704),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7487),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 291000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -5123,7 +5116,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1235,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5708),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7491),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 46000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -5144,7 +5137,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1236,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5713),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7496),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 150000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -5164,7 +5157,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1237,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5717),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7500),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 112000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -5184,7 +5177,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1238,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5720),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7504),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 294000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -5205,7 +5198,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1239,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5725),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7508),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 496000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -5225,7 +5218,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1240,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5729),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7512),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 139000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -5246,7 +5239,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1241,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5733),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7516),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 415000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -5266,7 +5259,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1242,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5737),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7520),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 498000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -5286,7 +5279,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1243,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5746),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7524),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 335000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -5307,7 +5300,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1244,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5750),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7528),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 75000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -5327,7 +5320,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1245,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5754),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7532),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 66000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -5348,7 +5341,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1246,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5759),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7550),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 460000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -5368,7 +5361,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1247,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5763),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7554),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 477000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -5388,7 +5381,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1248,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5767),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7558),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 187000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -5409,7 +5402,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1249,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5771),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7561),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 401000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -5429,7 +5422,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1250,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5775),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7565),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 221000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -5450,7 +5443,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1251,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5779),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7569),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 391000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -5470,7 +5463,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1252,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5783),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7574),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 114000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -5490,7 +5483,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1253,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5796),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7578),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 146000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -5511,7 +5504,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1254,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5801),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7582),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 484000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -5531,7 +5524,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1255,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5805),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7586),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 328000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -5552,7 +5545,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1256,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5809),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7589),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 39000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -5572,7 +5565,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1257,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5813),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7593),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 318000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -5592,7 +5585,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1258,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5817),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7607),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 493000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -5613,7 +5606,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1259,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5821),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7612),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 45000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -5633,7 +5626,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1260,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5825),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7616),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 127000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -5654,7 +5647,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1261,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5830),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7620),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 273000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -5674,7 +5667,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1262,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5834),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7624),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 357000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -5694,7 +5687,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1263,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5837),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7628),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 75000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -5715,7 +5708,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1264,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5842),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7632),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 112000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -5735,7 +5728,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1265,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5845),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7636),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 254000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -5756,7 +5749,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1266,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5850),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7640),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 36000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -5776,7 +5769,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1267,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5853),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7644),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 397000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -5796,7 +5789,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1268,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5857),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7648),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 173000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -5817,7 +5810,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1269,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5861),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7652),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 82000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -5837,7 +5830,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1270,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5864),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7655),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 346000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -5858,7 +5851,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1271,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5869),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7659),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 480000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -5878,7 +5871,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1272,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5872),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7663),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 468000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -5898,7 +5891,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1273,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5876),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7667),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 96000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -5919,7 +5912,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1274,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5883),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7671),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 346000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -5939,7 +5932,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1275,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5888),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7675),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 495000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -5960,7 +5953,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1276,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5892),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7679),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 197000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -5980,7 +5973,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1277,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5896),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7683),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 22000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6000,7 +5993,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1278,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5900),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7687),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 238000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -6021,7 +6014,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1279,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5904),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7698),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 104000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6041,7 +6034,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1280,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5908),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7702),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 138000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -6062,7 +6055,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1281,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5913),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7707),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 134000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6082,7 +6075,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1282,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5916),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7710),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 25000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6102,7 +6095,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1283,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5920),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7714),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 20000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6123,7 +6116,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1284,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5924),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7718),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 186000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6143,7 +6136,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1285,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5928),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7722),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 62000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -6164,7 +6157,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1286,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5932),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7726),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 125000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6184,7 +6177,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1287,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5936),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7731),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 96000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -6204,7 +6197,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1288,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5940),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7734),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 488000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -6225,7 +6218,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1289,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5945),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7739),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 344000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6245,7 +6238,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1290,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5948),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7742),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 135000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6266,7 +6259,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1291,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5953),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7747),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 39000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6286,7 +6279,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1292,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5957),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7751),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 481000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6306,7 +6299,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1293,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5960),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7755),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 80000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -6327,7 +6320,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1294,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5965),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7760),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 271000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -6347,7 +6340,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1295,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5977),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7763),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 500000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -6368,7 +6361,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1296,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5982),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7768),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 24000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6388,7 +6381,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1297,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5987),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7772),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 394000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6408,7 +6401,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1298,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5991),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7775),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 41000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6429,7 +6422,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1299,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5995),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7783),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 93000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6449,7 +6442,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1300,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(5999),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7787),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 320000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -6470,7 +6463,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1301,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6004),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7791),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 397000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6490,7 +6483,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1302,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6007),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7795),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 432000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -6510,7 +6503,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1303,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6011),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7799),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 440000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6531,7 +6524,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1304,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6015),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7803),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 207000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6551,7 +6544,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1305,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6019),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7807),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 66000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6572,7 +6565,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1306,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6023),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7812),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 91000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6592,7 +6585,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1307,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6027),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7815),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 271000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6612,7 +6605,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1308,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6031),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7819),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 186000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6633,7 +6626,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1309,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6035),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7824),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 70000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -6653,7 +6646,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1310,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6039),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7828),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 202000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6674,7 +6667,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1311,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6044),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7833),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 244000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6694,7 +6687,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1312,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6047),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7836),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 242000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -6714,7 +6707,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1313,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6051),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7841),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 96000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6735,7 +6728,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1314,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6056),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7845),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 346000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6755,7 +6748,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1315,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6059),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7848),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 491000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -6776,7 +6769,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1316,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6075),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7852),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 225000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6796,7 +6789,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1317,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6079),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7856),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 25000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -6816,7 +6809,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1318,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6083),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7860),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 46000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -6837,7 +6830,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1319,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6087),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7864),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 84000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -6857,7 +6850,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1320,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6091),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7876),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 484000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -6878,7 +6871,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1321,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6096),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7882),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 360000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6898,7 +6891,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1322,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6100),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7886),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 67000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -6918,7 +6911,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1323,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6103),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7890),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 112000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -6939,7 +6932,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1324,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6107),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7895),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 302000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -6959,7 +6952,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1325,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6111),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7899),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 203000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -6980,7 +6973,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1326,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6116),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7903),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 36000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -7000,7 +6993,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1327,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6119),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7907),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 285000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -7020,7 +7013,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1328,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6123),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7911),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 315000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -7041,7 +7034,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1329,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6127),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7915),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 336000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -7061,7 +7054,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1330,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6132),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7919),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 327000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -7082,7 +7075,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1331,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6136),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7923),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 106000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -7102,7 +7095,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1332,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6140),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7927),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 431000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -7122,7 +7115,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1333,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6143),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7931),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 418000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -7143,7 +7136,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1334,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6148),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7935),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 232000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -7163,7 +7156,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1335,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6152),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7939),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 71000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -7184,7 +7177,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1336,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6166),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7944),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 238000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -7204,7 +7197,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1337,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6172),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7947),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 396000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -7224,7 +7217,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1338,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6176),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7951),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 498000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -7245,7 +7238,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1339,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6180),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7955),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 70000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -7265,7 +7258,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1340,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6183),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7959),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 71000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -7286,7 +7279,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1341,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6187),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7967),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 391000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -7306,7 +7299,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1342,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6191),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7971),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 221000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -7326,7 +7319,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1343,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6196),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7975),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 375000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -7347,7 +7340,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1344,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6200),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7979),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 211000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -7367,7 +7360,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1345,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6203),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7983),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 216000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -7388,7 +7381,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1346,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6207),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7988),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 492000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -7408,7 +7401,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1347,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6211),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7991),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 25000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -7428,7 +7421,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1348,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6215),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7995),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 21000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -7449,7 +7442,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1349,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6219),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(7999),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 81000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -7469,7 +7462,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1350,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6223),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8003),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 357000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -7490,7 +7483,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1351,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6227),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8008),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 494000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -7510,7 +7503,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1352,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6231),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8012),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 35000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -7530,7 +7523,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1353,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6234),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8015),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 358000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -7551,7 +7544,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1354,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6239),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8020),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 305000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -7571,7 +7564,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1355,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6244),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8025),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 453000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -7592,7 +7585,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1356,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6248),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8029),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 375000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -7612,7 +7605,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1357,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6256),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8032),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 283000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -7632,7 +7625,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1358,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6260),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8036),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 282000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -7653,7 +7646,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1359,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6264),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8040),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 292000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -7673,7 +7666,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1360,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6268),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8044),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 247000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -7694,7 +7687,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1361,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6272),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8053),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 411000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -7714,7 +7707,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1362,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6275),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8058),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 251000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -7734,7 +7727,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1363,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6279),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8062),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 451000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -7755,7 +7748,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1364,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6284),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8067),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 419000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -7775,7 +7768,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1365,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6288),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8071),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 392000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -7796,7 +7789,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1366,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6292),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8075),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 138000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -7816,7 +7809,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1367,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6295),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8079),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 54000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -7836,7 +7829,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1368,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6299),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8082),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 44000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -7857,7 +7850,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1369,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6304),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8087),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 465000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -7877,7 +7870,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1370,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6308),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8091),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 206000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -7898,7 +7891,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1371,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6312),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8096),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 202000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -7918,7 +7911,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1372,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6316),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8100),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 500000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -7938,7 +7931,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1373,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6320),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8104),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 129000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -7959,7 +7952,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1374,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6324),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8108),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 462000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -7979,7 +7972,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1375,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6328),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8112),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 386000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -8000,7 +7993,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1376,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6332),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8117),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 178000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -8020,7 +8013,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1377,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6336),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8120),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 475000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -8040,7 +8033,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1378,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6345),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8124),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 472000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -8061,7 +8054,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1379,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6351),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8129),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 254000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -8081,7 +8074,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1380,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6355),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8133),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 128000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -8102,7 +8095,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1381,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6359),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8137),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 253000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -8122,7 +8115,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1382,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6363),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8144),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 120000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -8142,7 +8135,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1383,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6367),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8153),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 181000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -8163,7 +8156,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1384,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6371),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8157),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 315000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -8183,7 +8176,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1385,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6375),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8161),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 442000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -8204,7 +8197,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1386,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6379),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8165),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 358000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -8224,7 +8217,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1387,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6382),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8169),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 88000m,
                             Description = "Hasar görmemesi gereken hassas yük. Frigo veya kapalı kasa.",
@@ -8244,7 +8237,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1388,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6386),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8172),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 27000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -8265,7 +8258,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1389,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6390),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8177),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 306000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -8285,7 +8278,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1390,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6395),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8180),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 465000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -8306,7 +8299,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1391,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6399),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8184),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 52000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -8326,7 +8319,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1392,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6402),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8188),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 153000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -8346,7 +8339,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1393,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6406),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8191),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 365000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -8367,7 +8360,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1394,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6410),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8196),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 87000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -8387,7 +8380,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1395,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6414),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8199),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 160000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -8408,7 +8401,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1396,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6418),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8203),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 409000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -8428,7 +8421,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1397,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6422),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8207),
                             CargoImageUrl = "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 391000m,
                             Description = "Özenle paketlenmiş yük. Hızlı teslimat tercih sebebidir.",
@@ -8448,7 +8441,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1398,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6426),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8211),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 354000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -8469,7 +8462,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1399,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6435),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8215),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 226000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -8489,7 +8482,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1400,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6439),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8219),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 486000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -8510,7 +8503,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1401,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6443),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8223),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 431000m,
                             Description = "Boş dönecek taşıyıcılar için uygun fiyatlı sevkiyat.",
@@ -8530,7 +8523,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1402,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6446),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8227),
                             CargoImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 236000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -8550,7 +8543,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1403,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6450),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8236),
                             CargoImageUrl = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 351000m,
                             Description = "Paletli standart yük. Bağlama ve sabitleme kayışları gereklidir.",
@@ -8571,7 +8564,7 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1404,
-                            AuctionEndsAt = new DateTime(2026, 7, 11, 14, 24, 52, 192, DateTimeKind.Utc).AddTicks(6454),
+                            AuctionEndsAt = new DateTime(2026, 7, 11, 15, 28, 9, 521, DateTimeKind.Utc).AddTicks(8241),
                             CargoImageUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
                             CargoValue = 41000m,
                             Description = "İndirme ve bindirme göndericiye aittir. Güvenli sevkiyat.",
@@ -8594,28 +8587,26 @@ namespace backend.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("AdId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal?>("AutoBidMinLimit")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("CarrierId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsAutoBidEnabled")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -8695,23 +8686,21 @@ namespace backend.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("InsuranceNo")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("LicenseType")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<double>("Rating")
-                        .HasColumnType("float");
+                        .HasColumnType("REAL");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -8751,26 +8740,24 @@ namespace backend.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsRead")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Message")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -8783,30 +8770,28 @@ namespace backend.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("BankAccountNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("BankName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -8819,28 +8804,26 @@ namespace backend.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("AdId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("CarrierId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Comment")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Score")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("SenderId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -8857,35 +8840,33 @@ namespace backend.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("AmountBlockedCarrier")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("AmountBlockedSender")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("AuthCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("BidId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("DeliveryImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsVerifiedByAi")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -8899,50 +8880,48 @@ namespace backend.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Balance")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int?>("ParentFleetOwnerId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("PeriodicBonusActive")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<double>("SenderRating")
-                        .HasColumnType("float");
+                        .HasColumnType("REAL");
 
                     b.Property<int>("SenderRatingCount")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("UserLevel")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("UserType")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("WelcomeBonusExpiry")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
