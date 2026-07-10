@@ -1,0 +1,13 @@
+- `[ ]` **AÅŸama 1: C# Backend GÃ¼ncellemeleri**
+  - `[ ]` `User.cs` modeline `City` alanÄ±nÄ±n eklenmesi
+  - `[ ]` `AppDbContext.cs` Ã¼zerinde seed kullanÄ±cÄ±lara ÅŸehir atanmasÄ± ve 7 adet teklif (bids) seed verisinin eklenmesi
+  - `[ ]` EF Core Migration oluÅŸturulmasÄ± ve veritabanÄ±nÄ±n gÃ¼ncellenmesi
+- `[ ]` **AÅŸama 2: Projenin C:\Users\Public Konumuna TaÅŸÄ±nmasÄ±**
+  - `[ ]` Sunucu ve Flutter web gÃ¶revlerinin durdurulmasÄ±
+  - `[ ]` `C:\Users\Public\lojistikyol\frontend` klasÃ¶rÃ¼nÃ¼n oluÅŸturularak tÃ¼m kodlarÄ±n kopyalanmasÄ±
+- `[ ]` **AÅŸama 3: TaÅŸÄ±yÄ±cÄ± Filtreleme EkranÄ± (Flutter)**
+  - `[ ]` `explore_screen.dart` sayfasÄ±na "Ä°lanlar / TaÅŸÄ±yÄ±cÄ± Rehberi" geÃ§iÅŸinin eklenmesi
+  - `[ ]` TaÅŸÄ±yÄ±cÄ±larÄ±n illere, lisans tiplerine ve seviyelere gÃ¶re sÃ¼zÃ¼lmesini saÄŸlayan filtre panelinin yazÄ±lmasÄ±
+- `[ ]` **AÅŸama 4: EmÃ¼latÃ¶rÃ¼n Yeniden BaÅŸlatÄ±lmasÄ± ve Derleme**
+  - `[ ]` Mevcut emÃ¼latÃ¶rÃ¼n kapatÄ±lmasÄ± ve temiz bir ÅŸekilde yeniden baÅŸlatÄ±lmasÄ±
+  - `[ ]` Flutter projesinin yeni konumu Ã¼zerinden emÃ¼latÃ¶rde (`emulator-5554`) derlenerek Ã§alÄ±ÅŸtÄ±rÄ±lmasÄ±

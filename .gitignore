@@ -1,0 +1,34 @@
+# .NET / C# ignores
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+bin/
+obj/
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+appsettings.Development.json
+
+# Flutter / Dart ignores
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+*.apk
+*.aab
+*.ipa
+
+# OS / IDEs ignores
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
+.vscode/
+*.suo
+*.userosscache
+*.sln.docstates
