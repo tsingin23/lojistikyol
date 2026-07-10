@@ -12,23 +12,13 @@ echo 2. Android emulator durumu kontrol ediliyor...
 cd frontend
 
 set "emu_id="
-for /f "tokens=1" %%a in ('flutter emulators') do (
-    if not "%%a"=="" (
-        if not "%%a"=="Id" (
-            if not "%%a"=="To" (
-                if not "%%a"=="available" (
-                    if not "%%a"=="You" (
-                        set "emu_id=%%a"
-                    )
-                )
-            )
-        )
-    )
+for /f "tokens=1" %%a in ('flutter emulators ^| findstr /i "android" ^| findstr /v /i "http" ^| findstr /v /i "platform"') do (
+    set "emu_id=%%a"
 )
 
 if not "%emu_id%"=="" (
     echo Bulunan Emulator Kimligi: %emu_id%
-    echo Emulator baslatiliyor (Lutfen bekleyin)...
+    echo Emulator baslatiliyor, lutfen bekleyin...
     start "LojistikYol Emulator Launcher" cmd /c "flutter emulators --launch %emu_id%"
     echo Emulator baslatma sinyali gonderildi. 12 saniye bekleniyor...
     timeout /t 12 /nobreak >nul
